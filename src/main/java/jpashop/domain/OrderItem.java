@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.CascadeType.*;
+import static javax.persistence.FetchType.*;
+
 @Entity
 public class OrderItem extends  BaseEntity{
 
@@ -12,11 +15,11 @@ public class OrderItem extends  BaseEntity{
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY, cascade = ALL)
     @JoinColumn(name = "ITEM_ID")
     private Item item;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY, cascade = ALL)
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 
